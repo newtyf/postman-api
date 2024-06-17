@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "fadca8ef-fa14-4a56-8d5c-f171f7fd3735",
+		"name": "RRHH APPROVAL FLOW",
+		"description": "Flujo de aprobaciones, se definen dos endpoint uno del tipo POST para inicial el flujo de correos de aprobacion y el otro para de tipo GET que se encarga de actualizar el estado de una aprobacion, este ultimo es un link unico que se genera, para que sea usado una unica vez",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "18495390-fadca8ef-fa14-4a56-8d5c-f171f7fd3735"
+	},
+	"item": [
+		{
+			"name": "send_aprove_email",
+			"id": "04d29ea0-f75f-454d-8d85-dab8aa467a76",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 4mdV2p42DWVl4p723kAlghPSribIessyM9iRypzi",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codSolicitud\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/send_approve_email",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"send_approve_email"
+					]
+				},
+				"description": "Endpoint para iniciar el flujo de correos de aprobaciones, toma la solicitud y envia por orden a los aprobadores pendientes de aprobacion"
+			},
+			"response": [
+				{
+					"id": "4e14b51c-2ff0-485b-9601-843c1f9148f3",
+					"name": "ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 4mdV2p42DWVl4p723kAlghPSribIessyM9iRypzi",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codSolicitud\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/send_approve_email",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"send_approve_email"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text",
+							"uuid": "6801437c-734f-46b2-b943-f68803a9c072"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"message\": \"Se inicio el flujo de aprobaciones\"\n}"
+				},
+				{
+					"id": "220b655a-7323-434f-8910-b0fee1e9f67e",
+					"name": "bad request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 4mdV2p42DWVl4p723kAlghPSribIessyM9iRypzi",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codSolicitud\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/send_approve_email",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"send_approve_email"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text",
+							"uuid": "eab48d6c-2d40-414b-82eb-90d474d87bf4"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Esta solicitud ya finalizo o fue desaprobada\"\n}"
+				},
+				{
+					"id": "5728a65a-cd55-4297-9e6b-4bac29eb6c0c",
+					"name": "bad request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 4mdV2p42DWVl4p723kAlghPSribIessyM9iRypzi",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codSolicitud\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/send_approve_email",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"send_approve_email"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text",
+							"uuid": "b2d57e3d-d13c-480b-9059-e57102222ccc"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"No hay aprobadores disponibles\"\n}"
+				}
+			]
+		},
+		{
+			"name": "update_aprove_state",
+			"id": "fa6503a3-e6f5-4b7d-8646-f9f7af63aca1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/update_approve_status?status=1&token=eyJwYXlsb2FkIjo0LCJleHBpcmVzX2F0IjoxNzE4MzgwMzI3fQ==.d0ba1b07086ea727ff491862502bb97ff1d400e3c22a1c3a50f794aee0258096",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"update_approve_status"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "1"
+						},
+						{
+							"key": "token",
+							"value": "eyJwYXlsb2FkIjo0LCJleHBpcmVzX2F0IjoxNzE4MzgwMzI3fQ==.d0ba1b07086ea727ff491862502bb97ff1d400e3c22a1c3a50f794aee0258096"
+						}
+					]
+				},
+				"description": "Este es un one-time endpoint compuesto por un token y un parametro status, el cual permite la actualizacion del estado de una aprobacion, una vez por token generado"
+			},
+			"response": [
+				{
+					"id": "4b7ac951-611c-4b01-93fe-03d3b3e66426",
+					"name": "ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/update_approve_status?status=2&token=eyJwYXlsb2FkIjo0LCJleHBpcmVzX2F0IjoxNzE4MzgyMzg3fQ==.5aef7e8327ac4d1110d885de6ac1bfd93fe3a7cbf9623d9c079e356a341c282c",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"update_approve_status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "2"
+								},
+								{
+									"key": "token",
+									"value": "eyJwYXlsb2FkIjo0LCJleHBpcmVzX2F0IjoxNzE4MzgyMzg3fQ==.5aef7e8327ac4d1110d885de6ac1bfd93fe3a7cbf9623d9c079e356a341c282c"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"description": "",
+							"type": "text",
+							"uuid": "fb4bc434-d2ed-4551-91d6-56f8532ddfba"
+						}
+					],
+					"cookie": [],
+					"body": "\n<!DOCTYPE html\n  PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"\n  style=\"font-family:arial, 'helvetica neue', helvetica, sans-serif\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta content=\"width=device-width, initial-scale=1\" name=\"viewport\">\n        <meta name=\"x-apple-disable-message-reformatting\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n        <meta content=\"telephone=no\" name=\"format-detection\">\n        <title>Nuevo mensaje</title>\n        <!--[if (mso 16)]>\n        <style type=\"text/css\">\n    a {text-decoration: none;}\n    </style>\n        <![endif]-->\n        <!--[if gte mso 9]>\n        <style>sup { font-size: 100% !important; }</style>\n        <![endif]-->\n        <!--[if gte mso 9]>\n        <xml>\n            <o:OfficeDocumentSettings>\n                <o:AllowPNG></o:AllowPNG>\n                <o:PixelsPerInch>96</o:PixelsPerInch>\n            </o:OfficeDocumentSettings>\n        </xml>\n        <![endif]-->\n        <!--[if !mso]>\n        <!-- -->\n        <link href=\"https://fonts.googleapis.com/css2?family=Imprima&display=swap\" rel=\"stylesheet\">\n        <!--\n        <![endif]-->\n        <!--[if !mso]>\n        <!-- -->\n        <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i\" rel=\"stylesheet\">\n        <!--\n        <![endif]-->\n        <style type=\"text/css\">\n    #outlook a {\n      padding: 0;\n    }\n\n    .es-button {\n      mso-style-priority: 100 !important;\n      text-decoration: none !important;\n    }\n\n    a[x-apple-data-detectors] {\n      color: inherit !important;\n      text-decoration: none !important;\n      font-size: inherit !important;\n      font-family: inherit !important;\n      font-weight: inherit !important;\n      line-height: inherit !important;\n    }\n\n    .es-desk-hidden {\n      display: none;\n      float: left;\n      overflow: hidden;\n      width: 0;\n      max-height: 0;\n      line-height: 0;\n      mso-hide: all;\n    }\n\n    @media  only screen and (max-width:600px) {\n\n      p,\n      ul li,\n      ol li,\n      a {\n        line-height: 150% !important\n      }\n\n      h1,\n      h2,\n      h3,\n      h1 a,\n      h2 a,\n      h3 a {\n        line-height: 120%\n      }\n\n      h1 {\n        font-size: 30px !important;\n        text-align: left\n      }\n\n      h2 {\n        font-size: 24px !important;\n        text-align: left\n      }\n\n      h3 {\n        font-size: 20px !important;\n        text-align: left\n      }\n\n      .es-header-body h1 a,\n      .es-content-body h1 a,\n      .es-footer-body h1 a {\n        font-size: 30px !important;\n        text-align: left\n      }\n\n      .es-header-body h2 a,\n      .es-content-body h2 a,\n      .es-footer-body h2 a {\n        font-size: 24px !important;\n        text-align: left\n      }\n\n      .es-header-body h3 a,\n      .es-content-body h3 a,\n      .es-footer-body h3 a {\n        font-size: 20px !important;\n        text-align: left\n      }\n\n      .es-menu td a {\n        font-size: 14px !important\n      }\n\n      .es-header-body p,\n      .es-header-body ul li,\n      .es-header-body ol li,\n      .es-header-body a {\n        font-size: 14px !important\n      }\n\n      .es-content-body p,\n      .es-content-body ul li,\n      .es-content-body ol li,\n      .es-content-body a {\n        font-size: 14px !important\n      }\n\n      .es-footer-body p,\n      .es-footer-body ul li,\n      .es-footer-body ol li,\n      .es-footer-body a {\n        font-size: 14px !important\n      }\n\n      .es-infoblock p,\n      .es-infoblock ul li,\n      .es-infoblock ol li,\n      .es-infoblock a {\n        font-size: 12px !important\n      }\n\n      *[class=\"gmail-fix\"] {\n        display: none !important\n      }\n\n      .es-m-txt-c,\n      .es-m-txt-c h1,\n      .es-m-txt-c h2,\n      .es-m-txt-c h3 {\n        text-align: center !important\n      }\n\n      .es-m-txt-r,\n      .es-m-txt-r h1,\n      .es-m-txt-r h2,\n      .es-m-txt-r h3 {\n        text-align: right !important\n      }\n\n      .es-m-txt-l,\n      .es-m-txt-l h1,\n      .es-m-txt-l h2,\n      .es-m-txt-l h3 {\n        text-align: left !important\n      }\n\n      .es-m-txt-r img,\n      .es-m-txt-c img,\n      .es-m-txt-l img {\n        display: inline !important\n      }\n\n      .es-button-border {\n        display: block !important\n      }\n\n      a.es-button,\n      button.es-button {\n        font-size: 18px !important;\n        display: block !important;\n        border-right-width: 0px !important;\n        border-left-width: 0px !important;\n        border-top-width: 15px !important;\n        border-bottom-width: 15px !important\n      }\n\n      .es-adaptive table,\n      .es-left,\n      .es-right {\n        width: 100% !important\n      }\n\n      .es-content table,\n      .es-header table,\n      .es-footer table,\n      .es-content,\n      .es-footer,\n      .es-header {\n        width: 100% !important;\n        max-width: 600px !important\n      }\n\n      .es-adapt-td {\n        display: block !important;\n        width: 100% !important\n      }\n\n      .adapt-img {\n        width: 100% !important;\n        height: auto !important\n      }\n\n      .es-m-p0 {\n        padding: 0px !important\n      }\n\n      .es-m-p0r {\n        padding-right: 0px !important\n      }\n\n      .es-m-p0l {\n        padding-left: 0px !important\n      }\n\n      .es-m-p0t {\n        padding-top: 0px !important\n      }\n\n      .es-m-p0b {\n        padding-bottom: 0 !important\n      }\n\n      .es-m-p20b {\n        padding-bottom: 20px !important\n      }\n\n      .es-mobile-hidden,\n      .es-hidden {\n        display: none !important\n      }\n\n      tr.es-desk-hidden,\n      td.es-desk-hidden,\n      table.es-desk-hidden {\n        width: auto !important;\n        overflow: visible !important;\n        float: none !important;\n        max-height: inherit !important;\n        line-height: inherit !important\n      }\n\n      tr.es-desk-hidden {\n        display: table-row !important\n      }\n\n      table.es-desk-hidden {\n        display: table !important\n      }\n\n      td.es-desk-menu-hidden {\n        display: table-cell !important\n      }\n\n      .es-menu td {\n        width: 1% !important\n      }\n\n      table.es-table-not-adapt,\n      .esd-block-html table {\n        width: auto !important\n      }\n\n      table.es-social {\n        display: inline-block !important\n      }\n\n      table.es-social td {\n        display: inline-block !important\n      }\n\n      .es-desk-hidden {\n        display: table-row !important;\n        width: auto !important;\n        overflow: visible !important;\n        max-height: inherit !important\n      }\n    }\n  </style>\n    </head>\n    <body\n  style=\"width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0\">\n        <div class=\"es-wrapper-color\" style=\"background-color:#FFFFFF\">\n            <!--[if gte mso 9]>\n            <v:background xmlns:v=\"urn:schemas-microsoft-com:vml\" fill=\"t\">\n                <v:fill type=\"tile\" color=\"#ffffff\"></v:fill>\n            </v:background>\n            <![endif]-->\n            <table class=\"es-wrapper\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\n      style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top;background-color:#FFFFFF\">\n                <tr>\n                    <td valign=\"top\" style=\"padding:0;Margin:0\">\n                        <table cellpadding=\"0\" cellspacing=\"0\" class=\"es-content\" align=\"center\"\n            style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%\">\n                            <tr>\n                                <td align=\"center\" style=\"padding:0;Margin:0\">\n                                    <table bgcolor=\"#efefef\" class=\"es-content-body\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\"\n                  style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#EFEFEF;border-radius:20px 20px 0 0;width:800px\">\n                                        <tr>\n                                            <td align=\"left\" style=\"padding:0;Margin:0;padding-top:40px;padding-left:40px;padding-right:40px\">\n                                                <table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"\n                        style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\">\n                                                    <tr>\n                                                        <td align=\"left\" valign=\"top\" style=\"padding:0;Margin:0;\">\n                                                            <td align=\"left\" class=\"esd-block-image\" style=\"font-size: 0px;\">\n                                                                <a target=\"_blank\" href=\"https://direktor.com.pe/\">\n                                                                    <img src=\"https://direktor.com.pe/assets/isotipoD.png\" alt=\"Visit direktor\" style=\"display: block;\"\n                                title=\"Confirm email\" width=\"150\">\n                            \n                                                                </a>\n                                                                <p\n                              style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#2D3142;font-size:16px ;margin-left:30px;cursor: pointer;\">\n                                                                    <a target=\"_blank\" href=\"https://direktor.com.pe/\" style=\"text-decoration: none;\">Ir a Direktor </a>\n                                                                </p>\n                                                            </td>\n                                                        </td>\n                                                        <td align=\"left\" style=\"padding:20px;Margin:0;width:520px\">\n                                                            <h3\n                        style=\"Margin:0;line-height:34px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:28px;font-style:normal;font-weight:bold;color:#2D3142\">\n                        Se guardo su respuesta correctamente\n                                                                <br>\n\n                      \n                                                            </h3>\n                                                        </td>\n                                                    </tr>\n                                                    <tr>\n                                                        <td height=30></td>\n                                                    </tr>\n                                                </table>\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </td>\n                            </tr>\n                        </table>\n                        <table cellpadding=\"0\" cellspacing=\"0\" class=\"es-footer\" align=\"center\"\n      style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top\">\n                            <tr>\n                                <td align=\"center\" style=\"padding:0;Margin:0\">\n                                    <table bgcolor=\"#bcb8b1\" class=\"es-footer-body\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\"\n            style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px\">\n                                        <tr>\n                                            <td align=\"left\"\n                style=\"Margin:0;padding-left:20px;padding-right:20px;padding-bottom:30px;padding-top:40px\">\n                                                <table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"\n                  style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\">\n                                                    <tr>\n                                                        <td align=\"left\" style=\"padding:0;Margin:0;width:560px\">\n                                                            <table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" role=\"presentation\"\n                        style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\">\n                                                                <tr>\n                                                                    <td align=\"center\" style=\"padding:0;Margin:0;padding-top:20px\">\n                                                                        <p\n                              style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:21px;color:#2D3142;font-size:14px\">\n                                                                            <a target=\"_blank\" href=\"\"\n                                style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2D3142;font-size:14px\"></a>Copyright\n                              © 2023&nbsp;Direktor\n                                                                            <a target=\"_blank\" href=\"\"\n                                style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2D3142;font-size:14px\"></a>\n                                                                        </p>\n                                                                    </td>\n                                                                </tr>\n                                                            </table>\n                                                        </td>\n                                                    </tr>\n                                                </table>\n                                            </td>\n                                        </tr>\n                                    </table>\n                                </td>\n                            </tr>\n                        </table>\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </body>\n</html>"
+				},
+				{
+					"id": "b5d7775a-8594-4911-8905-0cf4712d3190",
+					"name": "bad request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/update_approve_status?status=1&token=eyJwYXlsb2FkIjo0LCJleHBpcmVzX2F0IjoxNzE4MzgwMzI3fQ==.d0ba1b07086ea727ff491862502bb97ff1d400e3c22a1c3a50f794aee0258096",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"update_approve_status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "1"
+								},
+								{
+									"key": "token",
+									"value": "eyJwYXlsb2FkIjo0LCJleHBpcmVzX2F0IjoxNzE4MzgwMzI3fQ==.d0ba1b07086ea727ff491862502bb97ff1d400e3c22a1c3a50f794aee0258096"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"description": "",
+							"type": "text",
+							"uuid": "caee8feb-4603-4502-9cff-11ca92cb83f1"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <title>Not Found</title>\n        <!-- Fonts -->\n        <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\">\n        <link href=\"https://fonts.googleapis.com/css2?family=Nunito&display=swap\" rel=\"stylesheet\">\n        <style>\r\n        /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */\r\n        html {\r\n            line-height: 1.15;\r\n            -webkit-text-size-adjust: 100%\r\n        }\r\n\r\n        body {\r\n            margin: 0\r\n        }\r\n\r\n        a {\r\n            background-color: transparent\r\n        }\r\n\r\n        code {\r\n            font-family: monospace, monospace;\r\n            font-size: 1em\r\n        }\r\n\r\n        [hidden] {\r\n            display: none\r\n        }\r\n\r\n        html {\r\n            font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;\r\n            line-height: 1.5\r\n        }\r\n\r\n        *,\r\n        :after,\r\n        :before {\r\n            box-sizing: border-box;\r\n            border: 0 solid #e2e8f0\r\n        }\r\n\r\n        a {\r\n            color: inherit;\r\n            text-decoration: inherit\r\n        }\r\n\r\n        code {\r\n            font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace\r\n        }\r\n\r\n        svg,\r\n        video {\r\n            display: block;\r\n            vertical-align: middle\r\n        }\r\n\r\n        video {\r\n            max-width: 100%;\r\n            height: auto\r\n        }\r\n\r\n        .bg-white {\r\n            --bg-opacity: 1;\r\n            background-color: #fff;\r\n            background-color: rgba(255, 255, 255, var(--bg-opacity))\r\n        }\r\n\r\n        .bg-gray-100 {\r\n            --bg-opacity: 1;\r\n            background-color: #f7fafc;\r\n            background-color: rgba(247, 250, 252, var(--bg-opacity))\r\n        }\r\n\r\n        .border-gray-200 {\r\n            --border-opacity: 1;\r\n            border-color: #edf2f7;\r\n            border-color: rgba(237, 242, 247, var(--border-opacity))\r\n        }\r\n\r\n        .border-gray-400 {\r\n            --border-opacity: 1;\r\n            border-color: #cbd5e0;\r\n            border-color: rgba(203, 213, 224, var(--border-opacity))\r\n        }\r\n\r\n        .border-t {\r\n            border-top-width: 1px\r\n        }\r\n\r\n        .border-r {\r\n            border-right-width: 1px\r\n        }\r\n\r\n        .flex {\r\n            display: flex\r\n        }\r\n\r\n        .grid {\r\n            display: grid\r\n        }\r\n\r\n        .hidden {\r\n            display: none\r\n        }\r\n\r\n        .items-center {\r\n            align-items: center\r\n        }\r\n\r\n        .justify-center {\r\n            justify-content: center\r\n        }\r\n\r\n        .font-semibold {\r\n            font-weight: 600\r\n        }\r\n\r\n        .h-5 {\r\n            height: 1.25rem\r\n        }\r\n\r\n        .h-8 {\r\n            height: 2rem\r\n        }\r\n\r\n        .h-16 {\r\n            height: 4rem\r\n        }\r\n\r\n        .text-sm {\r\n            font-size: .875rem\r\n        }\r\n\r\n        .text-lg {\r\n            font-size: 1.125rem\r\n        }\r\n\r\n        .leading-7 {\r\n            line-height: 1.75rem\r\n        }\r\n\r\n        .mx-auto {\r\n            margin-left: auto;\r\n            margin-right: auto\r\n        }\r\n\r\n        .ml-1 {\r\n            margin-left: .25rem\r\n        }\r\n\r\n        .mt-2 {\r\n            margin-top: .5rem\r\n        }\r\n\r\n        .mr-2 {\r\n            margin-right: .5rem\r\n        }\r\n\r\n        .ml-2 {\r\n            margin-left: .5rem\r\n        }\r\n\r\n        .mt-4 {\r\n            margin-top: 1rem\r\n        }\r\n\r\n        .ml-4 {\r\n            margin-left: 1rem\r\n        }\r\n\r\n        .mt-8 {\r\n            margin-top: 2rem\r\n        }\r\n\r\n        .ml-12 {\r\n            margin-left: 3rem\r\n        }\r\n\r\n        .-mt-px {\r\n            margin-top: -1px\r\n        }\r\n\r\n        .max-w-xl {\r\n            max-width: 36rem\r\n        }\r\n\r\n        .max-w-6xl {\r\n            max-width: 72rem\r\n        }\r\n\r\n        .min-h-screen {\r\n            min-height: 100vh\r\n        }\r\n\r\n        .overflow-hidden {\r\n            overflow: hidden\r\n        }\r\n\r\n        .p-6 {\r\n            padding: 1.5rem\r\n        }\r\n\r\n        .py-4 {\r\n            padding-top: 1rem;\r\n            padding-bottom: 1rem\r\n        }\r\n\r\n        .px-4 {\r\n            padding-left: 1rem;\r\n            padding-right: 1rem\r\n        }\r\n\r\n        .px-6 {\r\n            padding-left: 1.5rem;\r\n            padding-right: 1.5rem\r\n        }\r\n\r\n        .pt-8 {\r\n            padding-top: 2rem\r\n        }\r\n\r\n        .fixed {\r\n            position: fixed\r\n        }\r\n\r\n        .relative {\r\n            position: relative\r\n        }\r\n\r\n        .top-0 {\r\n            top: 0\r\n        }\r\n\r\n        .right-0 {\r\n            right: 0\r\n        }\r\n\r\n        .shadow {\r\n            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06)\r\n        }\r\n\r\n        .text-center {\r\n            text-align: center\r\n        }\r\n\r\n        .text-gray-200 {\r\n            --text-opacity: 1;\r\n            color: #edf2f7;\r\n            color: rgba(237, 242, 247, var(--text-opacity))\r\n        }\r\n\r\n        .text-gray-300 {\r\n            --text-opacity: 1;\r\n            color: #e2e8f0;\r\n            color: rgba(226, 232, 240, var(--text-opacity))\r\n        }\r\n\r\n        .text-gray-400 {\r\n            --text-opacity: 1;\r\n            color: #cbd5e0;\r\n            color: rgba(203, 213, 224, var(--text-opacity))\r\n        }\r\n\r\n        .text-gray-500 {\r\n            --text-opacity: 1;\r\n            color: #a0aec0;\r\n            color: rgba(160, 174, 192, var(--text-opacity))\r\n        }\r\n\r\n        .text-gray-600 {\r\n            --text-opacity: 1;\r\n            color: #718096;\r\n            color: rgba(113, 128, 150, var(--text-opacity))\r\n        }\r\n\r\n        .text-gray-700 {\r\n            --text-opacity: 1;\r\n            color: #4a5568;\r\n            color: rgba(74, 85, 104, var(--text-opacity))\r\n        }\r\n\r\n        .text-gray-900 {\r\n            --text-opacity: 1;\r\n            color: #1a202c;\r\n            color: rgba(26, 32, 44, var(--text-opacity))\r\n        }\r\n\r\n        .uppercase {\r\n            text-transform: uppercase\r\n        }\r\n\r\n        .underline {\r\n            text-decoration: underline\r\n        }\r\n\r\n        .antialiased {\r\n            -webkit-font-smoothing: antialiased;\r\n            -moz-osx-font-smoothing: grayscale\r\n        }\r\n\r\n        .tracking-wider {\r\n            letter-spacing: .05em\r\n        }\r\n\r\n        .w-5 {\r\n            width: 1.25rem\r\n        }\r\n\r\n        .w-8 {\r\n            width: 2rem\r\n        }\r\n\r\n        .w-auto {\r\n            width: auto\r\n        }\r\n\r\n        .grid-cols-1 {\r\n            grid-template-columns: repeat(1, minmax(0, 1fr))\r\n        }\r\n\r\n        @-webkit-keyframes spin {\r\n            0% {\r\n                transform: rotate(0deg)\r\n            }\r\n\r\n            to {\r\n                transform: rotate(1turn)\r\n            }\r\n        }\r\n\r\n        @keyframes spin {\r\n            0% {\r\n                transform: rotate(0deg)\r\n            }\r\n\r\n            to {\r\n                transform: rotate(1turn)\r\n            }\r\n        }\r\n\r\n        @-webkit-keyframes ping {\r\n            0% {\r\n                transform: scale(1);\r\n                opacity: 1\r\n            }\r\n\r\n            75%,\r\n            to {\r\n                transform: scale(2);\r\n                opacity: 0\r\n            }\r\n        }\r\n\r\n        @keyframes ping {\r\n            0% {\r\n                transform: scale(1);\r\n                opacity: 1\r\n            }\r\n\r\n            75%,\r\n            to {\r\n                transform: scale(2);\r\n                opacity: 0\r\n            }\r\n        }\r\n\r\n        @-webkit-keyframes pulse {\r\n\r\n            0%,\r\n            to {\r\n                opacity: 1\r\n            }\r\n\r\n            50% {\r\n                opacity: .5\r\n            }\r\n        }\r\n\r\n        @keyframes pulse {\r\n\r\n            0%,\r\n            to {\r\n                opacity: 1\r\n            }\r\n\r\n            50% {\r\n                opacity: .5\r\n            }\r\n        }\r\n\r\n        @-webkit-keyframes bounce {\r\n\r\n            0%,\r\n            to {\r\n                transform: translateY(-25%);\r\n                -webkit-animation-timing-function: cubic-bezier(.8, 0, 1, 1);\r\n                animation-timing-function: cubic-bezier(.8, 0, 1, 1)\r\n            }\r\n\r\n            50% {\r\n                transform: translateY(0);\r\n                -webkit-animation-timing-function: cubic-bezier(0, 0, .2, 1);\r\n                animation-timing-function: cubic-bezier(0, 0, .2, 1)\r\n            }\r\n        }\r\n\r\n        @keyframes bounce {\r\n\r\n            0%,\r\n            to {\r\n                transform: translateY(-25%);\r\n                -webkit-animation-timing-function: cubic-bezier(.8, 0, 1, 1);\r\n                animation-timing-function: cubic-bezier(.8, 0, 1, 1)\r\n            }\r\n\r\n            50% {\r\n                transform: translateY(0);\r\n                -webkit-animation-timing-function: cubic-bezier(0, 0, .2, 1);\r\n                animation-timing-function: cubic-bezier(0, 0, .2, 1)\r\n            }\r\n        }\r\n\r\n        @media (min-width:640px) {\r\n            .sm\\:rounded-lg {\r\n                border-radius: .5rem\r\n            }\r\n\r\n            .sm\\:block {\r\n                display: block\r\n            }\r\n\r\n            .sm\\:items-center {\r\n                align-items: center\r\n            }\r\n\r\n            .sm\\:justify-start {\r\n                justify-content: flex-start\r\n            }\r\n\r\n            .sm\\:justify-between {\r\n                justify-content: space-between\r\n            }\r\n\r\n            .sm\\:h-20 {\r\n                height: 5rem\r\n            }\r\n\r\n            .sm\\:ml-0 {\r\n                margin-left: 0\r\n            }\r\n\r\n            .sm\\:px-6 {\r\n                padding-left: 1.5rem;\r\n                padding-right: 1.5rem\r\n            }\r\n\r\n            .sm\\:pt-0 {\r\n                padding-top: 0\r\n            }\r\n\r\n            .sm\\:text-left {\r\n                text-align: left\r\n            }\r\n\r\n            .sm\\:text-right {\r\n                text-align: right\r\n            }\r\n        }\r\n\r\n        @media (min-width:768px) {\r\n            .md\\:border-t-0 {\r\n                border-top-width: 0\r\n            }\r\n\r\n            .md\\:border-l {\r\n                border-left-width: 1px\r\n            }\r\n\r\n            .md\\:grid-cols-2 {\r\n                grid-template-columns: repeat(2, minmax(0, 1fr))\r\n            }\r\n        }\r\n\r\n        @media (min-width:1024px) {\r\n            .lg\\:px-8 {\r\n                padding-left: 2rem;\r\n                padding-right: 2rem\r\n            }\r\n        }\r\n\r\n        @media (prefers-color-scheme:dark) {\r\n            .dark\\:bg-gray-800 {\r\n                --bg-opacity: 1;\r\n                background-color: #2d3748;\r\n                background-color: rgba(45, 55, 72, var(--bg-opacity))\r\n            }\r\n\r\n            .dark\\:bg-gray-900 {\r\n                --bg-opacity: 1;\r\n                background-color: #1a202c;\r\n                background-color: rgba(26, 32, 44, var(--bg-opacity))\r\n            }\r\n\r\n            .dark\\:border-gray-700 {\r\n                --border-opacity: 1;\r\n                border-color: #4a5568;\r\n                border-color: rgba(74, 85, 104, var(--border-opacity))\r\n            }\r\n\r\n            .dark\\:text-white {\r\n                --text-opacity: 1;\r\n                color: #fff;\r\n                color: rgba(255, 255, 255, var(--text-opacity))\r\n            }\r\n\r\n            .dark\\:text-gray-400 {\r\n                --text-opacity: 1;\r\n                color: #cbd5e0;\r\n                color: rgba(203, 213, 224, var(--text-opacity))\r\n            }\r\n        }\r\n    </style>\n        <style>\r\n        body {\r\n            font-family: 'Nunito', sans-serif;\r\n        }\r\n    </style>\n    </head>\n    <body class=\"antialiased\">\n        <div\r\n        class=\"relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0\">\n            <div class=\"max-w-xl mx-auto sm:px-6 lg:px-8\">\n                <div class=\"flex items-center pt-8 sm:justify-start sm:pt-0\">\n                    <div class=\"px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider\">\r\n                    404 </div>\n                    <div class=\"ml-4 text-lg text-gray-500 uppercase tracking-wider\">\r\n                    Not Found </div>\n                </div>\n            </div>\n        </div>\n    </body>\n</html>"
+				},
+				{
+					"id": "7a428e4a-50dd-4484-9bde-34cc69dc8a5f",
+					"name": "bad request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/update_approve_status",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"update_approve_status"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text",
+							"uuid": "69dd2d51-ebe9-4313-9862-9dcedc18a4e8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": {\n        \"status\": [\n            \"The status field is required.\"\n        ],\n        \"token\": [\n            \"The token field is required.\"\n        ]\n    }\n}"
+				},
+				{
+					"id": "be9d198e-6ee6-43e8-a6e3-1af6204ba98f",
+					"name": "bad request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/update_approve_status?status=409&token=eyJwYXlsb2FkIjo0LCJleHBpcmVzX2F0IjoxNzE4MzgwMzI3fQ==.d0ba1b07086ea727ff491862502bb97ff1d400e3c22a1c3a50f794aee0258096",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"update_approve_status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "409"
+								},
+								{
+									"key": "token",
+									"value": "eyJwYXlsb2FkIjo0LCJleHBpcmVzX2F0IjoxNzE4MzgwMzI3fQ==.d0ba1b07086ea727ff491862502bb97ff1d400e3c22a1c3a50f794aee0258096"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text",
+							"uuid": "ce60bf73-8b7c-449f-9852-2091bed4f87e"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": {\n        \"status\": [\n            \"The selected status is invalid.\"\n        ]\n    }\n}"
+				}
+			]
+		}
+	]
+}

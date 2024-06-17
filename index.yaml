@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: RRHH Approval Flow API
+  description: |
+    Flujo de aprobaciones, se definen dos endpoint uno del tipo POST para iniciar el flujo de correos de aprobación y el otro del tipo GET que se encarga de actualizar el estado de una aprobación, este último es un link único que se genera, para que sea usado una única vez.
+  version: 1.0.0
+servers:
+  - url: '{{host}}'
+    description: Host del servidor API
+components:
+  securitySchemes:
+    HMAC:
+      type: apiKey
+      in: query
+      name: token
+      description: HMAC firmado con una clave secreta y un payload.
+paths:
+  /api/send_approve_email:
+    post:
+      summary: Iniciar flujo de correos de aprobación
+      description: Endpoint para iniciar el flujo de correos de aprobaciones, toma la solicitud y envía por orden a los aprobadores pendientes de aprobación.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                codSolicitud:
+                  type: integer
+                  example: 2
+      responses:
+        '200':
+          description: Flujo de aprobaciones iniciado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Se inicio el flujo de aprobaciones
+        '400':
+          description: Error en la solicitud
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Esta solicitud ya finalizo o fue desaprobada
+  /api/update_approve_status:
+    get:
+      summary: Actualizar estado de aprobación
+      description: |
+        Este es un one-time endpoint compuesto por un token y un parámetro status, el cual permite la actualización del estado de una aprobación, una vez por token generado.
+      parameters:
+        - name: status
+          in: query
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - name: token
+          in: query
+          required: true
+
+          schema:
+            type: string
+            example: eyJwYXlsb2FkIjo0LCJleHBpcmVzX2F0IjoxNzE4MzgwMzI3fQ==.d0ba1b07086ea727ff491862502bb97ff1d400e3c22a1c3a50f794aee0258096
+      security:
+        - HMAC: []
+      responses:
+        '200':
+          description: Estado de aprobación actualizado
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "<!DOCTYPE html><html><head><title>Actualización exitosa</title></head><body>El estado de aprobación ha sido actualizado.</body></html>"
+        '400':
+          description: Error en la solicitud
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "<!DOCTYPE html><html><head><title>Error</title></head><body>El token ya ha sido usado o es inválido.</body></html>"
